@@ -1,6 +1,6 @@
 # Coding with an AI pair programmer
 
-[GitHub Copilot](https://github.com/features/copilot) is your AI pair programmer, built to support you throughout your development experience. As with any new tool, using GitHub Copilot requires learning a few new skills. This project is built to do exactly that, to give you an opportunity to build a project, using the language and tools you typically use, with GitHub Copilot.
+[GitHub Copilot](https://github.com/features/copilot) is your AI pair programmer, built to support you throughout your development experience. As with any new tool, using GitHub Copilot requires learning a few new skills. This project is built to do exactly that, to give you an opportunity to build a project, using the language and tools you typically use. For the Bitcoin mining dashboard added in this repository, see [MINING_DASHBOARD.md](./MINING_DASHBOARD.md).
 
 > **[Start hacking!](./hackathon.md)**
 
@@ -10,13 +10,13 @@ This project is configured with a [devcontainer](./.devcontainer/devcontainer.js
 
 The project does assume you are familiar with programming, but is not prescriptive about language or framework choice.
 
-## License 
+## License
 
 This project is licensed under the terms of the MIT open source license. Please refer to [MIT](./LICENSE.txt) for the full terms.
 
-## Maintainers 
+## Maintainers
 
-You can find the list of maintainers in [CODEOWNERS](./.github/CODEOWNERS)
+You can find the list of maintainers in [CODEOWNERS](./.github/CODEOWNERS).
 
 ## Support
 

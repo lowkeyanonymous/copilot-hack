@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101310" />
+    <meta
+      name="description"
+      content="A transparent Bitcoin ASIC and cloud-mining contract setup and profitability dashboard."
+    />
+    <title>Hashrate — Bitcoin mining desk</title>
+    <link rel="preconnect" href="https://api.coinbase.com" />
+    <link rel="preconnect" href="https://mempool.space" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./src/app.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#" aria-label="Hashrate home">
+          <span class="brand-mark" aria-hidden="true">₿</span>
+          <span>hashrate<span class="brand-dot">.</span></span>
+        </a>
+        <div class="side-caption">WORKSPACE</div>
+        <nav aria-label="Main navigation">
+          <a class="nav-link active" href="#dashboard">
+            <span class="nav-icon" aria-hidden="true">◫</span> Dashboard
+          </a>
+          <a class="nav-link" href="#calculator">
+            <span class="nav-icon" aria-hidden="true">⌁</span> Profitability
+          </a>
+          <a class="nav-link" href="#monthly-plan">
+            <span class="nav-icon" aria-hidden="true">◷</span> Monthly plan
+          </a>
+          <a class="nav-link" href="#pool-setup">
+            <span class="nav-icon" aria-hidden="true">⇄</span> Pool setup
+          </a>
+          <a class="nav-link" href="#cloud-contract">
+            <span class="nav-icon" aria-hidden="true">▤</span> Cloud contract check
+          </a>
+          <a class="nav-link" href="#getting-started">
+            <span class="nav-icon" aria-hidden="true">↗</span> Getting started
+          </a>
+        </nav>
+        <div class="sidebar-note">
+          <span class="status-dot"></span>
+          <div>
+            <strong>Estimate mode</strong>
+            <p>No miner, pool, or provider connected</p>
+          </div>
+        </div>
+        <div class="sidebar-footer">BUILT FOR REAL-WORLD MINING</div>
+      </aside>
+
+      <main id="dashboard" class="main-content">
+        <header class="topbar">
+          <div class="breadcrumb">Workspace <span>/</span> Overview</div>
+          <div class="topbar-right">
+            <span class="live-indicator"><span class="status-dot"></span> PUBLIC NETWORK DATA</span>
+            <button id="refresh-button" class="refresh-button" type="button">
+              <span aria-hidden="true">↻</span> Refresh
+            </button>
+          </div>
+        </header>
+
+        <section class="page-heading">
+          <div>
+            <p class="eyebrow">MINING WORKSPACE <span id="data-updated">Fetching public data…</span></p>
+            <h1>Your mining desk<span class="heading-period">.</span></h1>
+            <p class="page-intro">Check the economics and risks before committing money to Bitcoin mining.</p>
+          </div>
+          <a class="button button-primary" href="#cloud-contract"><span aria-hidden="true">⌁</span> Check a cloud contract</a>
+        </section>
+
+        <section class="notice" aria-label="Important mining information">
+          <span class="notice-icon" aria-hidden="true">i</span>
+          <p><strong>Self-mining takes real equipment and power.</strong> This dashboard does not mine Bitcoin or connect to an ASIC, pool, or cloud-mining provider. Operating your own miner needs a compatible ASIC, electricity, an internet connection, and typically a mining pool; a cloud contract is a separate, risky purchase from a third party.</p>
+        </section>
+
+        <section class="section-block" aria-labelledby="network-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">THE BITCOIN NETWORK</p>
+              <h2 id="network-title">Live conditions</h2>
+            </div>
+            <span class="source-label">PUBLIC SOURCES · NO ACCOUNT NEEDED</span>
+          </div>
+          <div class="network-grid">
+            <article class="metric-card">
+              <div class="metric-top"><span>BTC spot price</span><span class="metric-icon orange" aria-hidden="true">$</span></div>
+              <div id="btc-price" class="metric-value">—</div>
+              <div id="btc-price-status" class="metric-foot">Loading public market data</div>
+            </article>
+            <article class="metric-card">
+              <div class="metric-top"><span>Network hashrate</span><span class="metric-icon" aria-hidden="true">⌁</span></div>
+              <div id="network-hashrate" class="metric-value">—</div>
+              <div id="network-hashrate-status" class="metric-foot">Loading network data</div>
+            </article>
+            <article class="metric-card">
+              <div class="metric-top"><span>Mining difficulty</span><span class="metric-icon" aria-hidden="true">◈</span></div>
+              <div id="network-difficulty" class="metric-value">—</div>
+              <div id="network-difficulty-status" class="metric-foot">Loading network data</div>
+            </article>
+            <article class="metric-card block-card">
+              <div class="metric-top"><span>Block subsidy</span><span class="metric-icon" aria-hidden="true">▦</span></div>
+              <div class="metric-value">3.125 <small>BTC</small></div>
+              <div class="metric-foot">Per block · transaction fees vary</div>
+            </article>
+          </div>
+        </section>
+
+        <section id="monthly-plan" class="section-block monthly-section" aria-labelledby="monthly-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">A PLAN YOU CONTROL</p>
+              <h2 id="monthly-title">Monthly Bitcoin plan</h2>
+            </div>
+            <span class="source-label">MANUAL · NO MONEY OR BENEFITS PROVIDED</span>
+          </div>
+          <div class="safety-warning monthly-warning">
+            <span class="warning-icon" aria-hidden="true">!</span>
+            <p><strong>This is not SSI or an income program.</strong> There are no built-in funds, mining wages, benefits, or guaranteed payments here. It’s only a private monthly plan for money you already have. Bitcoin can lose value; put food, rent, utilities, medicine, and other essentials first. It’s okay to leave the amount at $0.</p>
+          </div>
+          <div class="estimate-layout monthly-layout">
+            <div class="estimate-panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">YOUR OPTIONAL MONTHLY BUDGET</p>
+                  <h2>Set an amount and date</h2>
+                </div>
+                <span class="example-tag">STARTS AT $0</span>
+              </div>
+              <p class="panel-intro">Record BTC your own mining pool has actually paid you, then choose how much you intend to send manually. This app does not connect to your miner, pool, wallet, or Cash App.</p>
+              <form id="monthly-form">
+                <div class="form-grid">
+                  <label class="field">
+                    <span>BTC pool payout received <span class="field-hint">BTC this month</span></span>
+                    <input name="payoutBtc" type="number" min="0" max="21000000" step="0.00000001" value="0" required inputmode="decimal" />
+                  </label>
+                  <label class="field">
+                    <span>BTC to send manually <span class="field-hint">BTC this month</span></span>
+                    <input name="transferBtc" type="number" min="0" max="21000000" step="0.00000001" value="0" required inputmode="decimal" />
+                  </label>
+                  <label class="field">
+                    <span>Planned transfer day <span class="field-hint">1–28 each month</span></span>
+                    <input name="contributionDay" type="number" min="1" max="28" step="1" value="1" required inputmode="numeric" />
+                  </label>
+                </div>
+                <div id="monthly-form-message" class="form-message" aria-live="polite"></div>
+              </form>
+              <div class="estimate-disclaimer">
+                <span aria-hidden="true">ⓘ</span>
+                <p>The BTC amount is a spot-price estimate only. It excludes purchase spread, fees, taxes, and price movement. Use a provider you independently trust; never share passwords or recovery phrases.</p>
+              </div>
+            </div>
+            <div class="results-panel monthly-results">
+              <div class="results-topline"><span>YOUR MINING PAYOUT · MANUAL</span><span class="estimate-pill"><span class="status-dot"></span> NOT CONNECTED</span></div>
+              <div id="monthly-btc-amount" class="payout-amount">— <span>BTC received</span></div>
+              <div id="monthly-usd-amount" class="payout-usd">— estimated value at spot</div>
+              <div class="results-divider"></div>
+              <div class="result-row"><span>BTC planned to send</span><strong id="monthly-transfer-btc">—</strong></div>
+              <div class="result-row"><span>Transfer value at spot</span><strong id="monthly-transfer-usd">—</strong></div>
+              <div class="result-row"><span>Next planned date</span><strong id="monthly-next-date">—</strong></div>
+              <div class="result-row"><span>This month’s note</span><strong id="monthly-completion">Not marked complete</strong></div>
+              <p id="monthly-plan-status" class="estimate-status">Enter a real pool payout; amounts are not fetched from a miner.</p>
+              <button id="monthly-complete-button" class="monthly-complete-button" type="button">Mark this month's transfer completed elsewhere</button>
+              <p class="monthly-button-note">This only records your note on this device. It does not make or verify a transfer.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="pool-setup" class="section-block pool-section" aria-labelledby="pool-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">YOUR ASIC · YOUR POOL ACCOUNT</p>
+              <h2 id="pool-title">Prepare pool connection settings</h2>
+            </div>
+            <span class="source-label">THIS APP DOES NOT RUN A POOL SERVER</span>
+          </div>
+          <div class="pool-layout">
+            <div class="estimate-panel">
+              <div class="pool-safety">
+                Use an endpoint from a pool you independently trust. Prefer its SSL endpoint when offered. This only prepares a settings snippet for your ASIC; it does not connect to or verify a pool, and there is no pool server hosted by this app.
+              </div>
+              <form id="pool-form" autocomplete="off">
+                <div class="form-grid">
+                  <label class="field">
+                    <span>Pool Stratum endpoint</span>
+                    <input name="poolEndpoint" type="url" maxlength="256" placeholder="stratum+ssl://pool.example:443" required spellcheck="false" autocomplete="off" />
+                  </label>
+                  <label class="field">
+                    <span>Worker name <span class="field-hint">from your pool account</span></span>
+                    <input name="poolWorker" type="text" maxlength="128" placeholder="account.worker1" required spellcheck="false" autocomplete="off" />
+                  </label>
+                </div>
+                <div class="pool-actions">
+                  <button id="pool-generate-button" class="button button-primary" type="submit">Prepare ASIC settings</button>
+                  <button id="pool-copy-button" class="refresh-button" type="button" disabled>Copy settings</button>
+                </div>
+                <div id="pool-form-message" class="form-message" aria-live="polite"></div>
+              </form>
+              <pre id="pool-config-output" class="pool-config-output" hidden></pre>
+              <p class="pool-password-warning">Never enter your pool password, Cash App details, wallet seed phrase, or private key here. Set the pool password directly in the ASIC's trusted local admin interface. Do not expose that interface to the public internet.</p>
+            </div>
+            <aside class="results-panel pool-guide">
+              <div class="results-topline"><span>SAFE CONNECTION CHECKLIST</span></div>
+              <ol class="pool-checklist">
+                <li>Choose an established pool and independently check its reputation, payout terms, fees, minimum, and payout address rules.</li>
+                <li>Copy its exact Bitcoin Stratum URL, port, account worker name, and instructions. Never guess an endpoint or port.</li>
+                <li>Configure the miner on its trusted admin interface on your local network; use only equipment and electricity you may operate.</li>
+                <li>Check the pool's own worker dashboard for accepted shares and payout status. This app cannot see live miner or pool activity.</li>
+              </ol>
+              <p class="pool-guide-note">A pool endpoint isn't a wallet address or payment guarantee. Pool payouts depend on actual accepted shares, thresholds, uptime, and the pool's rules.</p>
+            </aside>
+          </div>
+        </section>
+
+        <section class="section-block cloud-section" aria-labelledby="cloud-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">BEFORE YOU PAY ANY PROVIDER</p>
+              <h2 id="cloud-title">Cloud contract reality check</h2>
+            </div>
+            <span class="source-label">NO CLOUD-MINING PROVIDER IS CONNECTED</span>
+          </div>
+          <div class="safety-warning">
+            <span class="warning-icon" aria-hidden="true">!</span>
+            <p><strong>Please protect money you need.</strong> A cloud-mining contract is a risky purchase, not wages or reliable income. You could lose the entire upfront payment and receive nothing back. Don’t borrow or use money needed for food, rent, bills, or emergencies to buy one. If cash is urgent, mining is not a dependable way to get it.</p>
+          </div>
+          <div id="cloud-contract" class="estimate-layout cloud-layout">
+            <div class="estimate-panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">ENTER A PROVIDER'S OFFER</p>
+                  <h2>Check the contract math</h2>
+                </div>
+                <span class="example-tag">ILLUSTRATIVE INPUTS</span>
+              </div>
+              <p class="panel-intro">Use the actual terms, including every maintenance/hosting charge. A calculation cannot verify a provider or promise a payout.</p>
+              <form id="cloud-form">
+                <div class="form-grid">
+                  <label class="field">
+                    <span>Contract hashrate <span class="field-hint">TH/s</span></span>
+                    <input name="cloudHashrateTHs" type="number" min="0.001" step="any" value="10" required inputmode="decimal" />
+                  </label>
+                  <label class="field">
+                    <span>Upfront contract cost <span class="field-hint">USD</span></span>
+                    <input name="cloudUpfrontCost" type="number" min="0" step="any" value="500" required inputmode="decimal" />
+                  </label>
+                  <label class="field">
+                    <span>Maintenance / hosting <span class="field-hint">USD / day</span></span>
+                    <input name="cloudDailyFee" type="number" min="0" step="any" value="3" required inputmode="decimal" />
+                  </label>
+                  <label class="field">
+                    <span>Contract term <span class="field-hint">days</span></span>
+                    <input name="cloudTermDays" type="number" min="1" max="36500" step="1" value="180" required inputmode="numeric" />
+                  </label>
+                  <label class="field">
+                    <span>Pool fee <span class="field-hint">percent</span></span>
+                    <input name="cloudPoolFeePercent" type="number" min="0" max="100" step="any" value="2" required inputmode="decimal" />
+                  </label>
+                </div>
+                <div id="cloud-form-message" class="form-message" aria-live="polite"></div>
+              </form>
+              <div class="estimate-disclaimer">
+                <span aria-hidden="true">ⓘ</span>
+                <p>Uses today's difficulty/hashrate and BTC spot price across the whole term, assuming no downtime or difficulty change. This is deliberately optimistic: future network difficulty, BTC price, pool payouts, and fees can all change.</p>
+              </div>
+            </div>
+            <div class="results-panel cloud-results">
+              <div class="results-topline"><span>MODELLED CONTRACT SCENARIO</span><span class="estimate-pill"><span class="status-dot"></span> NOT A PAYOUT</span></div>
+              <div id="cloud-daily-payout" class="payout-amount">— <span>BTC / day</span></div>
+              <div id="cloud-daily-usd" class="payout-usd">— estimated pool payout / day at spot</div>
+              <div class="results-divider"></div>
+              <div class="result-row"><span>Upfront cost spread over term</span><strong id="cloud-amortized-cost">—</strong></div>
+              <div class="result-row"><span>Daily hosting / maintenance</span><strong id="cloud-daily-fees">—</strong></div>
+              <div class="result-row"><span>Modelled net / day</span><strong id="cloud-net-daily" class="net-value">—</strong></div>
+              <div class="result-row"><span>Modelled net over full term</span><strong id="cloud-net-term" class="net-value">—</strong></div>
+              <div class="result-row"><span>Break-even BTC price</span><strong id="cloud-break-even">—</strong></div>
+              <p id="cloud-estimate-status" class="estimate-status">Waiting for live network data.</p>
+            </div>
+          </div>
+          <div class="cashout-card">
+            <div class="cashout-heading"><span class="cashout-icon" aria-hidden="true">$</span><div><p class="eyebrow">BITCOIN TO CASH APP</p><h3>Possible route—not a transfer feature</h3></div></div>
+            <p>If you're mining with your own ASIC, a pool payout that actually reaches a wallet you control could fund a later transfer. Pool payout thresholds and timing vary, so mining does not guarantee money each month. This dashboard cannot send money or connect to your pool or Cash App. Whether you can receive BTC in Cash App depends on your account's current eligibility and the pool/provider's payout options.</p>
+            <ol class="cashout-steps">
+              <li>Check Cash App's current Bitcoin deposit availability, limits, and supported network in the official app.</li>
+              <li>If eligible, copy a fresh Bitcoin receiving address from Cash App and check that the provider supports withdrawals to that address on the same network. A <strong>$Cashtag is not a Bitcoin address.</strong></li>
+              <li>Send only a small test amount first if you proceed. Blockchain transfers are generally irreversible; provider minimums, network fees, delays, and account checks may apply.</li>
+              <li>To get dollars, a received BTC balance may need to be sold in Cash App; availability, fees, spread, identity checks, and tax rules can apply. Bitcoin's value can fall before or after a payout.</li>
+            </ol>
+            <p class="cashout-safety">Never give a provider your Cash App password, sign-in code, wallet recovery phrase, or private key. Ignore anyone promising guaranteed daily returns or demanding extra money to “unlock” a withdrawal.</p>
+          </div>
+        </section>
+
+        <section id="calculator" class="estimate-layout section-block" aria-labelledby="estimate-title">
+          <div class="estimate-panel">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">YOUR CONFIGURATION</p>
+                <h2 id="estimate-title">Profitability estimate</h2>
+              </div>
+              <span class="example-tag">EXAMPLE INPUTS</span>
+            </div>
+            <p class="panel-intro">Replace these example values with your ASIC and electricity rate. Settings stay in this browser.</p>
+            <form id="miner-form">
+              <div class="form-grid">
+                <label class="field">
+                  <span>Hashrate <span class="field-hint">TH/s</span></span>
+                  <input name="hashrateTHs" type="number" min="0.001" step="any" value="100" required inputmode="decimal" />
+                </label>
+                <label class="field">
+                  <span>Power draw <span class="field-hint">watts</span></span>
+                  <input name="powerWatts" type="number" min="1" step="any" value="3500" required inputmode="decimal" />
+                </label>
+                <label class="field">
+                  <span>Electricity rate <span class="field-hint">USD / kWh</span></span>
+                  <input name="electricityPrice" type="number" min="0" step="any" value="0.08" required inputmode="decimal" />
+                </label>
+                <label class="field">
+                  <span>Pool fee <span class="field-hint">percent</span></span>
+                  <input name="poolFeePercent" type="number" min="0" max="100" step="any" value="2" required inputmode="decimal" />
+                </label>
+              </div>
+              <div id="form-message" class="form-message" aria-live="polite"></div>
+            </form>
+            <div class="estimate-disclaimer">
+              <span aria-hidden="true">ⓘ</span>
+              <p>Estimate only: assumes steady operation and 144 blocks per day. Actual pool payouts vary with uptime, pool rules, transaction fees, and network changes. Excludes hardware, cooling, and other costs.</p>
+            </div>
+          </div>
+
+          <div class="results-panel">
+            <div class="results-topline"><span>ESTIMATED POOL PAYOUT</span><span class="estimate-pill"><span class="status-dot"></span> MODELLED</span></div>
+            <div id="daily-payout" class="payout-amount">— <span>BTC / day</span></div>
+            <div id="daily-payout-usd" class="payout-usd">— USD / day at spot</div>
+            <div class="results-divider"></div>
+            <div class="result-row"><span>Power cost / day</span><strong id="daily-power-cost">—</strong></div>
+            <div class="result-row"><span>Estimated net / day</span><strong id="daily-net" class="net-value">—</strong></div>
+            <div class="result-row"><span>Break-even electricity</span><strong id="break-even-rate">—</strong></div>
+            <p id="estimate-status" class="estimate-status">Waiting for live network data.</p>
+          </div>
+        </section>
+
+        <section id="getting-started" class="section-block setup-section" aria-labelledby="setup-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">FROM ESTIMATE TO SETUP</p>
+              <h2 id="setup-title">What you need to mine</h2>
+            </div>
+            <span class="source-label">NO WALLET SECRETS OR POOL CREDENTIALS STORED HERE</span>
+          </div>
+          <div class="setup-grid">
+            <article class="setup-card">
+              <span class="step-number">01</span>
+              <div><h3>Get a SHA-256 ASIC</h3><p>Bitcoin proof-of-work needs purpose-built ASIC hardware. A regular PC or graphics card is not a practical Bitcoin miner.</p></div>
+            </article>
+            <article class="setup-card">
+              <span class="step-number">02</span>
+              <div><h3>Plan power &amp; cooling</h3><p>Check your circuit, local electricity price, ventilation, noise, and heat before running a miner. Operating costs can exceed payouts.</p></div>
+            </article>
+            <article class="setup-card">
+              <span class="step-number">03</span>
+              <div><h3>Choose a mining pool</h3><p>Most miners join a pool for more regular payouts. Compare its payout method, fee, minimum payout, and reputation.</p></div>
+            </article>
+            <article class="setup-card">
+              <span class="step-number">04</span>
+              <div><h3>Configure on the ASIC</h3><p>Enter the pool’s URL, worker name, and payout details in your miner’s own trusted admin interface. Never enter a seed phrase here.</p></div>
+            </article>
+          </div>
+          <p class="setup-footer">This tool does not connect to miner admin pages, wallets, or pool accounts. Use only equipment and electricity you are authorized to operate.</p>
+        </section>
+        <footer class="page-footer">Bitcoin mining is competitive and outcomes are uncertain. An estimate is not a promise of earnings.</footer>
+      </main>
+    </div>
+  </body>
+</html>
