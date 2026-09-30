@@ -1,0 +1,8 @@
+{
+  "name": "hashrate-bitcoin-mining-desk",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}
